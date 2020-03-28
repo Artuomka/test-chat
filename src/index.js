@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const passport     = require("passport");
 const { Strategy } = require("passport-jwt");
 const nunjucks     = require("nunjucks");
+const path         = require('path');
 const config       = require("../src/config/config");
 const { jwt }      = require("../src/config/config");
 
@@ -29,7 +30,7 @@ passport.use(
     })
 );
 
-let env = nunjucks.configure(['../public/views/html/'], {
+nunjucks.configure([path.join(__dirname, '..', 'public','views', 'html')], {
   autoescape: true,
   express: app
 });
