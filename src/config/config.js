@@ -15,9 +15,9 @@ module.exports = {
   expiresIn: "1 day",
 
   mongo: {
-    url: "mongodb://127.0.0.1:27017/",
+    url: "mongodb://TestUser:testpassword123@ds251902.mlab.com:51902/heroku_4b0txgj8",
     options: {
-      dbName: "my_db",
+      dbName: "heroku_4b0txgj8",
       useNewUrlParser: true,
       useUnifiedTopology: true
     }
