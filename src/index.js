@@ -29,7 +29,7 @@ passport.use(
     })
 );
 
-nunjucks.configure("../public/views/html/", {
+let env = nunjucks.configure(['../public/views/html/'], {
   autoescape: true,
   express: app
 });
