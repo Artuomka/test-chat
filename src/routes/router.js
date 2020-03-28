@@ -3,6 +3,7 @@ const bcrypt     = require("bcrypt");
 const express    = require("express");
 const passport   = require("passport");
 const jwt        = require("jsonwebtoken");
+const path       = require('path');
 const UsersModel = require("../models/users_model");
 const config     = require("../config/config");
 
@@ -27,7 +28,7 @@ function createToken(body) {
 }
 
 module.exports = app => {
-  app.use("/assets", express.static("../public/views"));
+  app.use("/assets", express.static(path.join(__dirname, '..', '..', 'public', 'views')));
 
   app.get("/", checkAuth, (req, res) => {
     res.render("index.html", { username: req.user.username });
