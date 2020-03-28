@@ -36,13 +36,10 @@ $(document).ready(() => {
   });
 
   $("#newMessageBtn").on("click", e => {
-    console.log('clicked');
     socket.emit("receiveUsersList")
   });
 
   socket.on("usersList", (usersList) => {
-    // connectedUsers = connections;
-    console.log('recieved users' + JSON.stringify(usersList));
     for (let user of usersList) {
       addUser(user);
     }

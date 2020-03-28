@@ -82,7 +82,6 @@ module.exports = io => {
       if (!socket.username) {
         return;
       }
-      console.log ('receiveUsersList emitted');
       const data = [];
       for (let i = 0; i < connectionsList.length; i++) {
         data[i] = {
