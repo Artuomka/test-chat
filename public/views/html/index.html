@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Node chat</title>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+
+    </script>
+    <link rel="stylesheet" href="assets/css/index.css">
+    {% if not error %}
+    <script src='/socket.io/socket.io.js'></script>
+    {% endif %}
+</head>
+<body>
+{% if error %}
+<h3 class="error"> {{ error }} </h3>
+<div class="login-page">
+    <div class="form">
+        <div style="margin-top: 18px;">
+            <form class="register" method="post" style="display: none;">
+                <input type="text" name="username" placeholder="username"/>
+                <input type="password" name="password" placeholder="password"/>
+                <button type="submit">create</button>
+                <p class="message">Already registered? <a href="#">Sign In</a></p>
+            </form>
+            <form class="login" method="post">
+                <input type="text" name="username" placeholder="username"/>
+                <input type="password" name="password" placeholder="password"/>
+                <button type="submit">login</button>
+                <p class="message">Not registered? <a href="#">Create an account</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="assets/js/unauth.js"></script>
+{% else %}
+<div class="container clearfix">
+    <div class="chat">
+        <div class="chat-header clearfix">
+            <div class="chat-about">
+                <div class="chat-num-users">Hello, <span id="name">{{ username }},</span>
+                    this is the history of the messages you received
+                </div>
+            </div>
+            <div class="controls">
+                <a href="#" class="logout-btn">Logout</a>
+            </div>
+        </div>
+
+        <div class="chat-history">
+            <ul>
+            </ul>
+        </div>
+
+        <div class="chat-message clearfix">
+            <button id="newMessageBtn">
+                <a href="#openModal" class="" id="newMessageBtnRef">New message</a>
+            </button>
+        </div>
+    </div>
+</div>
+<script src="assets/js/auth.js"></script>
+
+<div id="openModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Create message</h3>
+            </div>
+            <div class="modal-body">
+                <select class="users-list-items l1" id="usersSelect">
+
+                </select>
+                <textarea name="message" placeholder="Type your message" rows="3"></textarea>
+                <button type="submit" onclick="document.location='#close'">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+</body>
+</html>
